@@ -1,0 +1,6 @@
+framework module LMPay {
+  umbrella header "LMPay.h"
+
+  export *
+  module * { export * }
+}

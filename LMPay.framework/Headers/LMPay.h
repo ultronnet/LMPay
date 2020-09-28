@@ -1,31 +1,17 @@
-# LMPay
-
-乐马支付iOS SDK
-https://www.lmpayplc.com
-
-## 功能
-【单笔支付】、【批量支付】、【预授权冻结】、【乐贝提现】
-自动判断是否安装乐马支付App
-
-## 集成步骤
-
-1. 注册乐马开发者
-2. 服务端接入
-3. 客户端接入
-
-## 注册开发者 
-请到乐马支付开发者应用登记页面，进行登记，登记并选择移动应用进行设置后，将该应用提交审核，只有审核通过的应用才能进行开发。
-审核通过后将得到接入的AppID。
-
-## 服务端接入
-
-## iOS SDK 接入
+//
+//  LeMaPayTool.h
+//  LeMaOCPaySDK
+//
+//  Created by apple on 2019/11/9.
+//  Copyright © 2019 apple. All rights reserved.
+//
 
 /* 使用说明
  *1.将SDK接入项目中
- *2.在项目pod中引入MBProgressHUD
- *3.在项目URL Types中加入Url Schemes  info-》url types
- *4.info.plist 文件中加入白名单 LeMaPayApp
+ *2.jiangImage.bundle引入项目中
+ *3.在项目pod中引入MBProgressHUD
+ *4.在项目URL Types中加入Url Schemes  info-》url types
+ *5.info.plist 文件中加入白名单 LeMaPayApp
  */
 
 /* code 错误码
@@ -41,6 +27,18 @@ https://www.lmpayplc.com
   其他错误信息以ErrorCompletionBlock 回调返回为准
  */
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+typedef void(^ErrorCompletionBlock)(NSDictionary *resultDic);
+
+@interface LMPay : NSObject
+
+//初始化
++ (LMPay *)shareInstance;
+
 /**
 SDK支付接口
 @param data 支付支付信息, 后端接口获取的json数据
@@ -50,4 +48,16 @@ SDK支付接口
 @param language  中文：zh-en 英文：en  柬语：km  默认为中文  注意：此参数只用于手机未安装乐马支付app调起h5时使用
 @param viewController  手机未安装app 则跳转h5
 @param errorCompletionBlock  支付异常回调
+*/
+- (void)initForLemaWithData:(id)data
+                    appType:(NSString *)appType
+                 urlSchemes:(NSString *)urlSchemes
+             netEnvironment:(int)netEnvironment
+                SDKLanguage:(NSString *)language
+         htmlPushController:(UIViewController *)viewController
+                  errorback:(ErrorCompletionBlock)errorCompletionBlock;
 
+
+@end
+
+NS_ASSUME_NONNULL_END
