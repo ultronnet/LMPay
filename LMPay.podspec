@@ -15,4 +15,7 @@ Pod::Spec.new do |s|
     s.resources           = "LMPay.bundle"
     s.frameworks          = 'WebKit'
     s.dependency          "MBProgressHUD"
+
+    s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 end  
