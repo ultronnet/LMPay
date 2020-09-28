@@ -36,48 +36,48 @@ SDK支持两种支付交互：
 - iOS客户段接入请参考此文档，[下载示例代码](https://github.com/ultronnet/LMPay)
 - Android 客户端接入请参考： <https://www.showdoc.com.cn/awesomesdk>
 
-### 导入SDK
+### 1. 导入SDK
 
 #### CocoaPods
 
 在 `Podfile` 中添加以下内容
 ```
-  use_frameworks!
+use_frameworks!
 
-  target 'YourTarget' do
-     pod 'LMPay'
-  end
+target 'YourTarget' do
+  pod 'LMPay'
+end
 ```
 然后执行 `pod install`
 
-### 工程配置
+### 2. 工程配置
 
 1. 定义 URL Schemes
 
-此 URL Schemes 用于支付完成后跳转回您的应用，您可以自定义值，但必须确保支付是的 `urlSchemes` 和 `info.plist` 中的值一致，
+此 URL Schemes 用于支付完成后跳转回您的应用，您可以自定义值，但必须确保调用支付接口时传入的 `urlSchemes` 参数和 `info.plist` 中的定义值一致。
 ```
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>YourCustomSchemes</string>
-			</array>
-		</dict>
-	</array>
+<key>CFBundleURLTypes</key>
+<array>
+	<dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<string>YourCustomSchemes</string>
+		</array>
+	</dict>
+</array>
 ```
 
 2. 添加乐马支付 App 的 URL Schemes 到白名单，在 `info.plist` 文件中添加以下内容：
 ```
-  <key>LSApplicationQueriesSchemes</key>
-  <array>
-    <string>NewLeMaPayApp</string>
-  </array>
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>NewLeMaPayApp</string>
+</array>
 ```
 
-### 调用支付接口
+### 3. 调用支付接口
 
 ```
 LMPay.shareInstance().initForLema(
