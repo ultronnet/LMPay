@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|  
     s.name              = 'LMPay'
-    s.version           = '0.1.0'
+    s.version           = '0.1.1'
     s.summary           = '乐马支付iOS SDK'
     s.homepage          = 'https://www.lmpayplc.com'
 
