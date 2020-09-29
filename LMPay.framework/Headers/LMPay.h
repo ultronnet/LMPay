@@ -45,7 +45,7 @@ SDK支付接口
 @param appType 应用类型order=订单支付 frozen=预授权 credit_getout=乐贝提现 autopay_sign=自动签约扣款
 @param urlSchemes 路由名称
 @param netEnvironment 环境 1:内网 2:外网 3:正式     默认正式3
-@param language  中文：zh-en 英文：en  柬语：km  默认为中文  注意：此参数只用于手机未安装乐马支付app调起h5时使用
+@param language  中文：zh-cn 英文：en  柬语：km  默认为中文  注意：此参数只用于手机未安装乐马支付app调起h5时使用
 @param viewController  手机未安装app 则跳转h5
 @param errorCompletionBlock  支付异常回调
 */

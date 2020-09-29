@@ -85,7 +85,7 @@ LMPay.shareInstance().initForLema(
     appType: "order",
     urlSchemes: "YourCustomSchemes",
     netEnvironment: 3,
-    sdkLanguage: "zh-en",
+    sdkLanguage: "zh-cn",
     htmlPush: pushVC) { (result: [AnyHashable : Any]) in
     DispatchQueue.main.async {
         print(result)
@@ -98,7 +98,7 @@ LMPay.shareInstance().initForLema(
 | appType | 应用类型 `order`=订单支付 `frozen`=预授权 `credit_getout`=乐贝提现`autopay_sign`=自动签约扣款 |
 | urlSchemes | 路由名称，请确保和 `info.plist` 定义的相同 |
 | netEnvironment | 环境 1:内网 2:外网 3:正式 默认正式3
-| language |  中文：`zh-en` 英文：`en`  柬语：`km`  默认为中文  注意：此参数只用于手机未安装乐马支付app调起h5时使用 |
+| language |  中文：`zh-cn` 英文：`en`  柬语：`km`  默认为中文  注意：此参数只用于手机未安装乐马支付app调起h5时使用 |
 | viewController | 手机未安装app 则跳转h5 |
 | errorCompletionBlock | 支付异常回调 |
 
@@ -122,3 +122,9 @@ LMPay.shareInstance().initForLema(
 
 1. 支付完成无法跳回自己的App
    > 检测是否添加 URL Schemes 中的值是否和 `urlSchemes` 参数的值相同
+
+2. 未安装 “乐马支付 App” 时，不会弹出 Web 支付页面
+   > 检查 `initForLema` 方法中 `htmlPush` 参数的 UIViewController 是否为当前界面，Web 页面将会在 `htmlPush` push 或 present 显示
+
+3. Web 页面中取消支付或返回时，无法关闭 Web 页面
+   > 关闭 Web 页面需要开发者自己在 `errorCompletionBlock` 中处理取消或退出的事件，并调用 pop 或 dismiss 退出
