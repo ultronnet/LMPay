@@ -12,7 +12,6 @@ Pod::Spec.new do |s|
 
     s.ios.deployment_target = '10.0'
     s.vendored_frameworks = 'LMPay.framework'
-    s.resources           = "LMPay.bundle"
     s.frameworks          = 'WebKit'
     s.dependency          "MBProgressHUD"
 

@@ -52,7 +52,7 @@ SDK支付接口
 - (void)initForLemaWithData:(id)data
                     appType:(NSString *)appType
                  urlSchemes:(NSString *)urlSchemes
-             netEnvironment:(int)netEnvironment
+             netEnvironment:(NSInteger)netEnvironment
                 SDKLanguage:(NSString *)language
          htmlPushController:(UIViewController *)viewController
                   errorback:(ErrorCompletionBlock)errorCompletionBlock;
