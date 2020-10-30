@@ -86,7 +86,9 @@ LMPay.shareInstance().initForLema(
     urlSchemes: "YourCustomSchemes",
     netEnvironment: 3,
     sdkLanguage: "zh-cn",
-    htmlPush: pushVC) { (result: [AnyHashable : Any]) in
+    htmlPush: pushVC,
+    mustH5: false,
+    ) { (result: [AnyHashable : Any]) in
     DispatchQueue.main.async {
         print(result)
     }
@@ -99,7 +101,8 @@ LMPay.shareInstance().initForLema(
 | urlSchemes | 路由名称，请确保和 `info.plist` 定义的相同 |
 | netEnvironment | 环境 1:内网 2:外网 3:正式 默认正式3
 | language |  中文：`zh-cn` 英文：`en`  柬语：`km`  默认为中文  注意：此参数只用于手机未安装乐马支付app调起h5时使用 |
-| viewController | 手机未安装app 则跳转h5 |
+| viewController | 手机未安装 App 则跳转h5 |
+| mustH5 | 手机已安装 乐马支付 App 强制跳转 H5 支付 |
 | errorCompletionBlock | 支付异常回调 |
 
 ### 状态码
