@@ -55,6 +55,7 @@ SDK支付接口
              netEnvironment:(NSInteger)netEnvironment
                 SDKLanguage:(NSString *)language
          htmlPushController:(UIViewController *)viewController
+                   isMustH5:(BOOL)isMustH5
                   errorback:(ErrorCompletionBlock)errorCompletionBlock;
 
 
