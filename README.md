@@ -58,14 +58,16 @@ end
 ```
 <key>CFBundleURLTypes</key>
 <array>
-	<dict>
-		<key>CFBundleTypeRole</key>
-		<string>Editor</string>
-		<key>CFBundleURLSchemes</key>
-		<array>
-			<string>YourCustomSchemes</string>
-		</array>
-	</dict>
+  <dict>
+    <key>CFBundleTypeRole</key>
+    <string>Editor</string>
+    <key>CFBundleURLName</key>
+    <string>lmpay</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>YourCustomSchemes</string>
+    </array>
+  </dict>
 </array>
 ```
 
@@ -104,6 +106,24 @@ LMPay.shareInstance().initForLema(
 | viewController | 手机未安装 App 则跳转h5 |
 | isMustH5 | 手机已安装 乐马支付 App 强制跳转 H5 支付 |
 | errorCompletionBlock | 支付异常回调 |
+
+### 4. 处理 App 支付结果
+
+支持 [`UIScene`](https://developer.apple.com/documentation/uikit/uiscene)（iOS 13+）的应用在 `UIWindowSceneDelegate` 以下回调中处理支付结果
+```
+func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+   guard let url = URLContexts.first?.url else {
+      return
+   }
+   LMPay.shareInstance().handleOpen(url)
+}
+```
+支持 iOS 13 以下的应用，在 `UIApplicationDelegate` 以下回调中处理结果
+```
+func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+   return LMPay.shareInstance().handleOpen(url)
+}
+```
 
 ### 状态码
 

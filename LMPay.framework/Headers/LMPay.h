@@ -39,6 +39,8 @@ typedef void(^ErrorCompletionBlock)(NSDictionary *resultDic);
 //初始化
 + (LMPay *)shareInstance;
 
+- (BOOL)isLemaInstalled;
+
 /**
 SDK支付接口
 @param data 支付支付信息, 后端接口获取的json数据
@@ -58,6 +60,10 @@ SDK支付接口
                    isMustH5:(BOOL)isMustH5
                   errorback:(ErrorCompletionBlock)errorCompletionBlock;
 
+
+    /// 处理 乐马App 返回的支付结果
+    /// @param url  `application: handleOpenURL:` 中获取的 URL
+- (BOOL)handleOpenURL:(NSURL *)url;
 
 @end
 
